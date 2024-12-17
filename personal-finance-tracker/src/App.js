@@ -1,10 +1,10 @@
 import React from 'react';
-import UserList from './components/UserList';
+import HomePage from './components/HomePage';
 
 function App() {
   return (
-    <div className="App">
-      <UserList />
+    <div>
+      <HomePage />
     </div>
   );
 }
