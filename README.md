@@ -27,6 +27,7 @@ Before starting, ensure your system has the following installed:
 
 ### 1. Set Up Backend
 ```
+cd backend
 node index.js
 ```
 ### 2. Set Up Frontend
