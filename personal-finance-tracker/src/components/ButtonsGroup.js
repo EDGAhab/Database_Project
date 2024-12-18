@@ -14,10 +14,10 @@ const ButtonsGroup = ({ setActiveSection }) => (
           Edit Personal Information
         </button>
         <button
-          onClick={() => setActiveSection("uploadSection")}
+          onClick={() => setActiveSection("search")}
           className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 px-8 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
         >
-          Upload Your Finance Report
+          Natural Language Search
         </button>
       </div>
     </div>

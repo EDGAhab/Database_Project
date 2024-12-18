@@ -4,6 +4,7 @@ import ButtonsGroup from "./ButtonsGroup";
 import EditForm from "./EditForm";
 import UploadSection from "./UploadSection";
 import AnalysisTable from "./AnalysisTable";
+import NaturalLanguageSearch from "./NaturalLanguageSearch";
 
 const HomePage = () => {
   const [activeSection, setActiveSection] = useState(null); // Keeps track of the active section
@@ -37,7 +38,7 @@ const HomePage = () => {
         />
       )}
       {activeSection === "editForm" && <EditForm />}
-      {activeSection === "uploadSection" && <UploadSection />}
+      {activeSection === "search" && <NaturalLanguageSearch />}
     </div>
   );
 };

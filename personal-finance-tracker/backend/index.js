@@ -77,6 +77,27 @@ app.post("/update-goals", (req, res) => {
   });
 });
 
+// Route to execute a custom SQL query
+app.post("/execute-sql", (req, res) => {
+  const { sql } = req.body;
+
+  if (!sql) {
+    return res.status(400).json({ error: "No SQL query provided." });
+  }
+
+  // Execute the provided SQL query
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error("Error executing SQL query:", err);
+      return res.status(500).json({ error: "Failed to execute SQL query." });
+    }
+    if (results.length === 0) {
+      return res.status(200).json({ message: "This query can't be processed in our database." });
+    }
+    res.status(200).json(results);
+  });
+});
+
 // Start the Server
 const PORT = 5000;
 app.listen(PORT, () => {
