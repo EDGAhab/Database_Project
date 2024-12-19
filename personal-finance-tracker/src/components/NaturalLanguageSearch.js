@@ -13,7 +13,6 @@ const NaturalLanguageSearch = () => {
     setResults([]);
 
     try {
-      // Step 1: Generate SQL with GPT-4 API
       const gptResponse = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -37,7 +36,6 @@ const NaturalLanguageSearch = () => {
       const generatedSQL = gptData.choices[0].message.content.trim();
       setSqlCommand(generatedSQL);
 
-      // Step 2: Pass the SQL to the backend
       const backendResponse = await fetch("http://localhost:5000/execute-sql", {
         method: "POST",
         headers: {
