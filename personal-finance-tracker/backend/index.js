@@ -6,12 +6,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MySQL Connection
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Feilian990725", // Add your password if applicable
-  database: "finance_track", // Ensure correct database name
+  password: "Feilian990725",
+  database: "finance_track",
 });
 
 db.connect(err => {
@@ -22,7 +21,6 @@ db.connect(err => {
   console.log("Connected to MySQL database.");
 });
 
-// Route for Personal Financial Analysis
 app.get("/financial-analysis/:userId", (req, res) => {
   const userId = req.params.userId;
   const query = `
@@ -77,7 +75,7 @@ app.post("/update-goals", (req, res) => {
   });
 });
 
-// Route to execute a custom SQL query
+
 app.post("/execute-sql", (req, res) => {
   const { sql } = req.body;
 
@@ -85,7 +83,6 @@ app.post("/execute-sql", (req, res) => {
     return res.status(400).json({ error: "No SQL query provided." });
   }
 
-  // Execute the provided SQL query
   db.query(sql, (err, results) => {
     if (err) {
       console.error("Error executing SQL query:", err);
@@ -98,7 +95,7 @@ app.post("/execute-sql", (req, res) => {
   });
 });
 
-// Start the Server
+
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

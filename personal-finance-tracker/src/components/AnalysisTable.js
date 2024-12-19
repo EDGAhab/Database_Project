@@ -23,7 +23,7 @@ const AnalysisTable = () => {
     };
 
     fetchFinancialAnalysis();
-  }, []); // Runs only when the component is mounted
+  }, []);
 
   if (loading) {
     return <p className="text-center text-blue-600 mt-4">Loading financial data...</p>;

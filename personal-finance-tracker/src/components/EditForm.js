@@ -12,7 +12,7 @@ const EditForm = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          UserID: 1, // Placeholder
+          UserID: 1,//
           GoalName: savingGoal,
           TargetAmount: savingAmount,
           Deadline: deadline,
