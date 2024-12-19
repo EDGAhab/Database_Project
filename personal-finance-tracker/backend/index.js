@@ -25,19 +25,11 @@ app.get("/financial-analysis/:userId", (req, res) => {
   const userId = req.params.userId;
   const query = `
     SELECT 
-        u.UserID,
         u.Name AS UserName,
-        a.AccountName,
-        a.AccountType,
-        a.Balance,
-        t.TransactionDate,
-        t.TransactionType,
-        t.Amount AS TransactionAmount,
+        sg.CurrentAmount,
         sg.GoalName,
         sg.TargetAmount
     FROM Users u
-    LEFT JOIN Accounts a ON u.UserID = a.UserID
-    LEFT JOIN Transactions t ON a.AccountID = t.AccountID
     LEFT JOIN SavingsGoals sg ON u.UserID = sg.UserID
     WHERE u.UserID = ?;
   `;
@@ -50,6 +42,7 @@ app.get("/financial-analysis/:userId", (req, res) => {
     res.json(results);
   });
 });
+
 
 
 // Update SavingsGoals
@@ -72,6 +65,31 @@ app.post("/update-goals", (req, res) => {
       return res.status(500).json({ error: "Database update failed." });
     }
     res.json({ success: true, message: "Savings goal updated successfully." });
+  });
+});
+
+app.get("/spending-habits/:userId", (req, res) => {
+  const userId = req.params.userId;
+  const query = `
+    SELECT 
+        c.Name AS CategoryName,
+        IFNULL(SUM(t.Amount), 0) AS TotalSpent,
+        MONTH(t.TransactionDate) AS Month
+    FROM Transactions t
+    LEFT JOIN Categories c ON t.CategoryID = c.CategoryID
+    WHERE t.AccountID IN (
+        SELECT AccountID FROM Accounts WHERE UserID = ?
+    )
+    GROUP BY c.Name, MONTH(t.TransactionDate)
+    ORDER BY Month, TotalSpent DESC;
+  `;
+
+  db.query(query, [userId], (err, results) => {
+    if (err) {
+      console.error("Error fetching spending habits:", err);
+      return res.status(500).json({ error: "Database query failed" });
+    }
+    res.json(results);
   });
 });
 
