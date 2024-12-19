@@ -35,3 +35,11 @@ node index.js
 npm install
 npm start
 ```
+
+---
+
+## Screenshot
+
+![Function1](Function1.png)
+![Function2](Function2.png)
+![Function3](Function3.png)
