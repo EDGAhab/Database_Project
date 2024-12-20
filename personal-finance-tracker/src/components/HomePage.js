@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import NavigationBar from "./NavigationBar";
 import ButtonsGroup from "./ButtonsGroup";
 import EditForm from "./EditForm";
-import UploadSection from "./UploadSection";
 import AnalysisTable from "./AnalysisTable";
 import NaturalLanguageSearch from "./NaturalLanguageSearch";
 

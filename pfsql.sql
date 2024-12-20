@@ -207,10 +207,9 @@ GROUP BY
 DELIMITER $$
 CREATE PROCEDURE GetMonthlyReport (
     IN p_UserID INT,
-    IN p_MonthYear VARCHAR(7)  -- Format: 'YYYY-MM'
+    IN p_MonthYear VARCHAR(7)
 )
 BEGIN
-    -- Generates a summary of income and expenses by category for a specific month
     SELECT 
         c.Name AS Category,
         SUM(CASE WHEN t.TransactionType = 'Expense' THEN t.Amount ELSE 0 END) AS TotalSpent,
