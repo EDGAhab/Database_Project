@@ -43,12 +43,11 @@ const AnalysisTable = () => {
     <div className="overflow-x-auto mx-auto mt-4 w-11/12">
       {data.map((row, index) => (
         row.GoalName && row.TargetAmount ? (
-          <div key={index} className="mb-12"> {/* Increased margin for better spacing */}
-            {/* Progress Bar */}
-            <p className="text-lg font-semibold text-blue-700 mb-4 text-center"> {/* Adjusted spacing */}
+          <div key={index} className="mb-12"> 
+            <p className="text-lg font-semibold text-blue-700 mb-4 text-center">
               Goal: {row.GoalName} (${row.TargetAmount})
             </p>
-            <div className="w-3/4 bg-gray-200 rounded-full h-6 mx-auto mb-8"> {/* Increased spacing below */}
+            <div className="w-3/4 bg-gray-200 rounded-full h-6 mx-auto mb-8">
               <div
                 className="h-6 rounded-full bg-green-500 text-xs text-white flex items-center justify-center"
                 style={{
@@ -58,9 +57,7 @@ const AnalysisTable = () => {
                 {Math.min(100, ((row.CurrentAmount / row.TargetAmount) * 100).toFixed(2))}%
               </div>
             </div>
-
-            {/* Original Financial Analysis Table */}
-            <table className="min-w-full bg-white border rounded-lg shadow-md mb-8"> {/* Adjusted margin for spacing */}
+            <table className="min-w-full bg-white border rounded-lg shadow-md mb-8">
               <thead className="bg-blue-500 text-white">
                 <tr>
                   <th className="py-2 px-4 border">User Name</th>
@@ -79,8 +76,7 @@ const AnalysisTable = () => {
               </tbody>
             </table>
 
-            {/* Spending Habits Table */}
-            <div className="mt-8"> {/* Added spacing above spending habits */}
+            <div className="mt-8">
               <h3 className="text-center text-blue-600 font-bold">Spending Habits</h3>
               <div className="overflow-x-auto">
                 <table className="min-w-full bg-white border rounded-lg shadow-md">
